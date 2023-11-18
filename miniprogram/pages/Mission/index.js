@@ -165,10 +165,12 @@ Page({
     const mission = this.data.unfinishedMissions[missionIndex]
 
     await wx.cloud.callFunction({name: 'getOpenId'}).then(async openid => {
-      if(mission._openid != openid.result){
-        //完成对方任务，奖金打入对方账号
+      if(mission._openid == openid.result){
+        // 对方openId
+        const _openid = mission._openid === this.data._openidA ? this.data._openidB : this.data._openidA
+        // 确认完成任务，奖金打入对方账号
         await wx.cloud.callFunction({name: 'editAvailable', data: {_id: mission._id, value: false, list: getApp().globalData.collectionMissionList}})
-        await wx.cloud.callFunction({name: 'editCredit', data: {_openid: mission._openid, value: mission.credit, list: getApp().globalData.collectionUserList}})
+        await wx.cloud.callFunction({name: 'editCredit', data: {_openid, value: mission.credit, list: getApp().globalData.collectionUserList}})
 
         //触发显示更新
         mission.available = false
