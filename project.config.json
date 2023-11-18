@@ -41,11 +41,12 @@
         "showES6CompileOption": false,
         "useCompilerPlugins": false,
         "ignoreUploadUnusedFiles": true,
-        "useStaticServer": true
+        "useStaticServer": true,
+        "condition": false
     },
     "compileType": "miniprogram",
     "libVersion": "2.14.1",
-    "appid": "wx461db390b6650bea",
+    "appid": "wxe47004274b423e37",
     "projectname": "DailyMissions",
     "miniprogramRoot": "miniprogram/",
     "cloudfunctionRoot": "cloudfunctions/",
